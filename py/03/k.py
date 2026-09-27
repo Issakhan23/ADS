@@ -1,8 +1,7 @@
 t = int(input())
-queries = list(map(int, input().split()))
+q = list(map(int, input().split()))
 
 n, m = map(int, input().split())
-
 a = []
 row_max = []
 
@@ -15,55 +14,51 @@ for i in range(n):
     else:
         row_max.append(row[-1])
 
-
 def find_row(x):
-    left = 0
-    right = n - 1
+    l = 0
+    r = n - 1
 
-    while left <= right:
-        mid = (left + right) // 2
+    while l <= r:
+        mid = (l + r) // 2
 
         if row_max[mid] >= x:
-            left = mid + 1
+            l = mid + 1
         else:
-            right = mid - 1
-
-    return right
+            r = mid - 1
+    return r
 
 
 def find_in_row(row, x, increasing):
-    left = 0
-    right = m - 1
+    l = 0
+    r = m - 1
 
-    while left <= right:
-        mid = (left + right) // 2
+    while l <= r:
+        mid = (l + r) // 2
 
         if row[mid] == x:
             return mid
 
         if increasing:
             if row[mid] < x:
-                left = mid + 1
+                l = mid + 1
             else:
-                right = mid - 1
+                r = mid - 1
         else:
             if row[mid] > x:
-                left = mid + 1
+                l = mid + 1
             else:
-                right = mid - 1
-
+                r = mid - 1
     return -1
 
-
-for x in queries:
+for x in q:
     r = find_row(x)
 
     if r < 0:
         print(-1)
         continue
 
-
     row = a[r]
+
 
     if r % 2 == 0:
         if x < row[-1]:

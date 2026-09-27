@@ -1,20 +1,23 @@
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
-left = 0.0
-right = max(a)
 
-for _ in range(100):
-    mid = (left + right) / 2
+l = 0.0
+r = max(a) + 1
 
-    pieces = 0
-
+for _ in range(45):
+    m = (l + r) / 2
+    
+    p = 0
     for x in a:
-        pieces += int(x / mid)
+        p += int(x/m)
 
-    if pieces >= k:
-        left = mid
+        if p >= k:
+            break
+
+    if p >= k:
+        l = m
     else:
-        right = mid
+        r = m
 
-print(f"{left:.9f}")
+print(f"{l:.9f}")

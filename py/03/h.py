@@ -1,16 +1,20 @@
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
-left = 0
-current_sum = 0
-answer = n
+if k == 0:
+    print(1)
+    exit()
 
-for right in range(n):
-    current_sum += a[right]
+l = 0
+cur_sum = 0
+ans = n
 
-    while current_sum >= k:
-        answer = min(answer, right - left + 1)
-        current_sum -= a[left]
-        left += 1
+for r in range(n):
+    cur_sum += a[r]
 
-print(answer)
+    while cur_sum >= k:
+        ans = min(ans, r - l + 1)
+        cur_sum -= a[l]
+        l += 1
+
+print(ans)

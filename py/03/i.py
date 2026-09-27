@@ -1,30 +1,29 @@
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
-
 def can(x):
-    groups = 1
-    current = 0
+    g = 1
+    cur = 0
 
-    for value in a:
-        if current + value <= x:
-            current += value
+    for val in a:
+        if cur + val <= x:
+            cur += val
         else:
-            groups += 1
-            current = value
+            g += 1
+            cur = val
 
-    return groups <= k
+    return g <= k
+
+l = max(a)
+r = sum(a)
 
 
-left = max(a)
-right = sum(a)
+while l < r:
+    m = (l + r) // 2
 
-while left < right:
-    mid = (left + right) // 2
-
-    if can(mid):
-        right = mid
+    if can(m):
+        r = m
     else:
-        left = mid + 1
+        l = m + 1
 
-print(left)
+print(l)

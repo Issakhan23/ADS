@@ -1,5 +1,4 @@
 n, k = map(int, input().split())
-
 a = []
 
 for _ in range(n):
@@ -7,5 +6,4 @@ for _ in range(n):
     a.append(max(x2, y2))
 
 a.sort()
-
-print(a[k - 1])
+print(a[k-1])
